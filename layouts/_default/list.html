@@ -22,7 +22,7 @@
   {{partial "pagination-navigation.html" . }}
 {{ end }}
 
-{{ partial "footer.html" . }}
+{{ partial "footer-start.html" . }}
 
 <!-- only add pagination for pages that need it -->
 {{ if eq .RelPermalink (printf "/%s/" .Section) }}
@@ -30,3 +30,5 @@
 {{ $.Scratch.Set "page" . }}
 {{partial "infinite-scroll.html" . }}
 {{ end }}
+
+{{ partial "footer-end.html" . }}
