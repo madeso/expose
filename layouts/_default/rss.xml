@@ -11,14 +11,6 @@
     <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
     <atom:link href="{{.URL}}" rel="self" type="application/rss+xml" />
 
-    <item>
-      <title>{{ .Title }}</title>
-      <link>dog</link>
-      <pubDate>1982</pubDate>
-      <guid>dog</guid>
-      <description>{{ .Section | html }}</description>
-    </item>
-
     {{$section := .Section }}
     <!-- This if excludes sub sections from displaying other neighbouring sections in the same root section -->
     {{ if eq .RelPermalink (printf "/%s/" .Section) }}
