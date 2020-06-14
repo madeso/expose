@@ -34,10 +34,6 @@
 {{- end }}
 {{ $c := $.Scratch.Get "c"}}
 
-<!-- changes terminal display to a more winow like look -->
-{{ $newCode := "<div class=\"terminal-window\"><header><div class=\"button green\"></div><div class=\"button yellow\"></div><div class=\"button red\"></div></header><dection>$1</section></div>" }}
-{{ $c := $c | replaceRE "(<pre><code class=\"language-shell\">[^<]+</code></pre>)" $newCode }}
-
 <!-- change smileys? -->
 {{ $c := $c | replaceRE "[☺🙂]" "<i class=\"emoticon smiley\"></i>" }}
 
