@@ -13,7 +13,6 @@
 <!-- This if excludes sub sections from displaying other neighbouring sections in the same root section -->
 {{ if eq .RelPermalink (printf "/%s/" .Section) }}
   <div id="pages">
-    {{partial "pagenumber.html" $paginator }}
     {{ range $paginator.Pages }}
       {{partial "post-preview.html" . }}
       {{partial "to-top.html" $self }}

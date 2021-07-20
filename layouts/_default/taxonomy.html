@@ -6,7 +6,6 @@
 
 {{ $paginator := .Paginate .Data.Pages.ByPublishDate }}
 <div id="pages">
-    {{partial "pagenumber.html" $paginator }}
     {{ range $paginator.Pages }}
         {{ partial "fullpost.html" . }}
     {{ end }}
