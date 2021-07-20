@@ -324,10 +324,3 @@ a:hover {
 {
     color: #000;
 }
-
-#spinner {
-    margin-left: auto;
-    margin-right: auto;
-    width: 50px;
-    display: none;
-}

@@ -13,9 +13,4 @@
 {{partial "pagination-navigation.html" . }}
 
 {{ partial "footer-start.html" . }}
-
-{{ $.Scratch.Set "paginator" $paginator }}
-{{ $.Scratch.Set "page" . }}
-{{partial "infinite-scroll.html" . }}
-
 {{ partial "footer-end.html" . }}
