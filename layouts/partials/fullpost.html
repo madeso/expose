@@ -1,6 +1,6 @@
 {{$self := .}}
 
-<div class="post">
+<article class="post">
 
 {{ if or (eq .Section "") (eq .RelPermalink (printf "/%s/" .Section)) }}
   <div class="title">
@@ -46,4 +46,4 @@
 {{ partial "post-share.html" . }}
 {{ end }}
 
-</div>
+  </article>
