@@ -298,8 +298,31 @@ ul.pagination {
     padding: 0;
 }
 
-.pagination a:hover {
-    font-weight: bold;
+.pagination li {
+    display: inline;
+    padding: 10px;
+}
+
+.pagination li:first-child, .pagination li:last-child {
+    padding: 0;
+}
+
+a {
+    color: #55f;
+}
+
+a:hover {
+    color: #00f;
+}
+
+.pagination .disabled a
+{
+    color: #aaa;
+}
+
+.pagination .active a
+{
+    color: #000;
 }
 
 .pagenumber {
