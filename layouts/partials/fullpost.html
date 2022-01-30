@@ -12,7 +12,18 @@
   <div class="clear"></div>
 {{ else }}
   <a href="{{.Permalink}}"><h1>{{.Title}}</h1></a>
-  <p>{{.Date.Format $.Site.Params.LongDateFormat}}</p>
+  <p>
+    {{.Date.Format $.Site.Params.LongDateFormat}}
+
+    {{ if (gt .ReadingTime 1) }}
+    
+      <span style="display: inline-block; width: 10px"> &nbsp; </span>
+      //
+      reading time 
+      ~{{ .ReadingTime }} minute{{ if (ne .ReadingTime 1) }}s{{ end }}
+    {{ end }}
+  </p>
+  
 {{ end }}
 
 {{with .Params.params.image}}
