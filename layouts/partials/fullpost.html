@@ -5,9 +5,12 @@
 {{ if or (eq .Section "") (eq .RelPermalink (printf "/%s/" .Section)) }}
   <div class="title">
   <div class="main header">{{.Title}}</div>
-  {{if eq .RelPermalink (printf "/%s/" .Section)}}
-    <a class="right" href="{{.RSSLink}}" type="application/rss+xml"><i class="fa fa-rss"></i></a>
-  {{end}}
+
+  {{ range .AlternativeOutputFormats -}}
+    {{ printf `<a class="right" href="%s" type="%s"><i class="fa fa-rss"></i></a>` .Permalink .MediaType.Type | safeHTML}}
+  {{ end -}}
+
+
   </div>
   <div class="clear"></div>
 {{ else }}
