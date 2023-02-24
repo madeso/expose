@@ -16,20 +16,20 @@
     --cyan:      #2aa198;
     --green:     #859900;
 
-    --emph: var(--base1);
-    --text: var(--base0);
-    --comments: var(--base01);
-    --background-hi: var(--base02);
-    --background: var(--base03);
+    --emph: var(--base01);
+    --text: var(--base00);
+    --comments: var(--base1);
+    --background-hi: var(--base2);
+    --background: var(--base3);
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
     :root {
-        --emph: var(--base01);
-        --text: var(--base00);
-        --comments: var(--base1);
-        --background-hi: var(--base2);
-        --background: var(--base3);
+        --emph: var(--base1);
+        --text: var(--base0);
+        --comments: var(--base01);
+        --background-hi: var(--base02);
+        --background: var(--base03);
     }
 }
   
