@@ -15,7 +15,7 @@ trunc: {{.Truncated}}
 rss: {{.RSSLink}}
 </p>
 
-{{with .Params.params.image}}
+{{with .Params.image}}
 <img src="{{$self.Permalink}}{{.}}">
 {{end}}
 
@@ -23,7 +23,7 @@ rss: {{.RSSLink}}
 <div class="markdown">{{partial "content.html" . }}</div>
 
 {{ if .IsNode }}
-  {{with .Params.params.Photos}}
+  {{with .Params.Photos}}
     {{$photos := . }}
     {{- $path := printf "content%s/%s" $self.RelPermalink $photos -}}
     {{- $files := readDir $path -}}

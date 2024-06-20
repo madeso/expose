@@ -7,7 +7,7 @@
 
 {{$self := .}}
 
-{{with .Params.params.image}}
+{{with .Params.image}}
 <div class="bigimage">
 <img class="bigimage" src="{{$self.Permalink}}{{.}}">
 </div>
@@ -21,7 +21,7 @@
 {{end}}
 
 {{ if .IsNode }}
-  {{with .Params.params.Photos}}
+  {{with .Params.Photos}}
     {{$photos := . }}
     {{- $path := printf "content%s/%s" $self.RelPermalink $photos -}}
     {{- $files := readDir $path -}}

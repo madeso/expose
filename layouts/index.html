@@ -11,7 +11,7 @@
 {{ if eq .Type "project" }}
 {{ if not (eq .RelPermalink "/project/") }}
 {{$self := .}}
-{{with .Params.params.featuredimage}}
+{{with .Params.featuredimage}}
 <a href="{{$self.Permalink}}"><img src="{{$self.Permalink}}{{.}}"></a>
 {{end}}
 {{ end }}
