@@ -10,7 +10,7 @@
   {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="author" content="{{ .Site.Author.name }}"/>
+  <meta name="author" content="{{ .Site.Params.Author.name }}"/>
 
   <!-- twitter  -->
   {{ template "_internal/twitter_cards.html" . }}
