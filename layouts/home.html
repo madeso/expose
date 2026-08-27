@@ -1,0 +1,66 @@
+{{ define "main" }}
+	<div id="intro">
+		<div class="markdown">{{partial "content.html" . }}</div>
+	</div>
+
+	<div id="featuredprojects" class="featured">
+		<h2 class="latestpostsheader">Featured projects</h2>
+			<div class="featuedimages">
+			{{ range $i, $p := .Site.Pages }}
+				{{ if eq .Type "project" }}
+					{{ if not (eq .RelPermalink "/project/") }}
+						{{$self := .}}
+						{{with .Params.featuredimage}}
+							<a href="{{$self.Permalink}}"><img src="{{$self.Permalink}}{{.}}"></a>
+						{{end}}
+					{{ end }}
+				{{ end }}
+			{{ end }}
+		</div>
+	</div>
+
+	{{ if isset .Site.Params "latestdevlogcount" }}
+		<div class="featured">
+			{{ $all_posts := where .Site.Pages "Section" "devlog" }}
+			{{ $posts := where $all_posts "RelPermalink" "!=" "/devlog/" }}
+			{{ $postcount := len $posts }}
+			{{ if gt $postcount 0 }}	
+				<h2>Latest devlogs</h2>
+				{{ range (first .Site.Params.latestdevlogcount $posts)}}
+					<section>
+					<h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
+					{{partial "content.html" . }}
+				</section>
+				{{ end }}
+
+				{{ if gt $postcount .Site.Params.latestdevlogcount }}
+					<a href="./devlog/">See more devlogs...</a>
+				{{ end }}
+			{{ end }}
+		</div>
+	{{ end }}
+
+
+	{{ if isset .Site.Params "latestpostcount" }}
+		<div id="latestblog" class="featured">
+		{{ $all_posts := where .Site.Pages "Section" "blog" }}
+		{{ $posts := where $all_posts "RelPermalink" "!=" "/blog/" }}
+		{{ $postcount := len $posts }}
+		{{ if gt $postcount 0 }}
+			<h2>Latest blog posts</h2>
+			{{ range (first .Site.Params.latestpostcount $posts)}}
+				<section>
+					{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+					{{ $dateHuman := .Date | time.Format "2006-01-02" }}
+					<time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+					<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+				</section>
+			{{ end }}
+
+			{{ if gt $postcount .Site.Params.latestpostcount }}
+				<a href="./blog/">See more blog posts...</a>
+			{{ end }}
+		{{ end }}
+		</div>
+	{{ end }}
+{{ end }}

@@ -1,0 +1,6 @@
+/* stolen from https://danq.me/2025/08/15/details-summary-lightboxes-in-pure-html-css/ */
+
+.project-image {
+  display: inline-block;
+  padding: 3px;
+}

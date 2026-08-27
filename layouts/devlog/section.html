@@ -1,0 +1,13 @@
+{{ define "main" }}
+	<h1>{{ .Title }}</h1>
+	{{partial "content.html" . }}
+	{{ range .Pages.ByDate.Reverse.GroupByDate "2006" }}
+		<h2>{{ .Key }}</h2>
+		{{range .Pages }}
+			<section>
+				<h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
+				{{partial "content.html" . }}
+			</section>
+		{{ end }}
+	{{ end }}
+{{ end }}

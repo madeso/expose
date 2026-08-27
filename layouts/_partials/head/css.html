@@ -1,0 +1,18 @@
+{{- with resources.Get "css/main.css" }}
+  {{- $opts := dict
+    "minify" (cond hugo.IsDevelopment false true)
+    "sourceMap" (cond hugo.IsDevelopment "linked" "none")
+  }}
+  {{- with . | css.Build $opts }}
+    {{- if hugo.IsDevelopment }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{- else }}
+      {{- with . | fingerprint }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+      {{- end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+<!-- todo: change to fork awesome or some better icon lib/or inline svg? -->
+<script src="https://kit.fontawesome.com/ffb2187c9e.js" crossorigin="anonymous"></script>

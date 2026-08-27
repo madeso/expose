@@ -1,0 +1,5 @@
+<img id="mainlogo" alt="the main logo" src="{{.Site.BaseURL}}logo.png">
+<div id="header">
+    <h1 id="title">{{ .Site.Title }}</h1>
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+</div>

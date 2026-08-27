@@ -1,0 +1,21 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<meta name="author" content="{{ .Site.Params.Author.name }}"/>
+
+{{ template "_internal/twitter_cards.html" . }}
+{{ template "_internal/opengraph.html" . }}
+{{ hugo.Generator -}}
+<link rel="canonical" href="{{ .Permalink }}"> <!-- this should help search engines -->
+
+<link rel="shortcut icon" href="{{.Site.BaseURL}}/favicon.ico" type="image/x-icon">
+<link rel="icon" href="{{.Site.BaseURL}}/favicon.ico" type="image/x-icon">
+<link rel="icon" sizes="192x192" href="{{.Site.BaseURL}}/favicon-highres.png">
+<meta name="theme-color" content="#7092be">
+
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+{{ partialCached "head/css.html" . }}
+{{ partialCached "head/js.html" . }}

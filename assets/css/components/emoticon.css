@@ -1,0 +1,11 @@
+.smiley {
+    background-image: url(/img/face-smile.png);
+}
+
+.wink {
+    background-image: url(/img/face-wink.png);
+}
+
+.grin {
+    background-image: url(/img/face-grin.png);
+}

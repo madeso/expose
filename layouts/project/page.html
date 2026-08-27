@@ -1,0 +1,36 @@
+{{ define "main" }}
+	<h1>{{ .Title }}</h1>
+	{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+	{{ $dateHuman := .Date | time.Format ":date_long" }}
+	<time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+	
+	{{ $main_img := .Page.Resources.Get "main.png" }}
+	{{ with $main_img }}
+		<img class="bigimage" src="{{.RelPermalink}}" />
+	{{ end }}
+
+	{{partial "content.html" . }}
+	{{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+
+	{{ $screens := .Page.Resources.Match "screens/*.png" }}
+	{{with $screens}}
+		<div class="screenshots">
+			{{ range . }}
+				<details class="details-lightbox screenshot" aria-label="larger image">
+					<summary>
+						<img src="{{.RelPermalink}}" width="50" alt="Alt text for the thumbnail image.">
+					</summary>
+					<div>
+						<img src="{{.RelPermalink}}" alt="Larger image: alt text for the full image." loading="lazy">
+					</div>
+				</details>
+			{{ end }}
+		</div>
+	{{ end}}
+
+	{{partial "project-links.html"}}
+
+	<p />
+
+	{{ partial "terms.html" (dict "taxonomy" "categories" "page" .) }}
+{{ end }}

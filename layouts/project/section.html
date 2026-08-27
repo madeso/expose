@@ -1,0 +1,53 @@
+{{ define "main" }}
+	<h1>{{ .Title }}</h1>
+	{{partial "content.html" . }}
+
+
+	{{ range .Pages.ByDate.Reverse }}
+		{{ $project := . }}
+		{{ $main_img := .Page.Resources.Get "main.png" }}
+		{{ with $main_img }}
+			<section class="project-image">
+				<a href="{{ $project.RelPermalink }}">
+					<div>
+						{{ $dateMachine := $project.Date | time.Format "2006-01-02T15:04:05-07:00" }}
+						{{ $dateHuman := $project.Date | time.Format "2006-01-02" }}
+						<time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+
+						{{ with $project.Params.links}}
+							{{with .play}}
+								<i class="fa fa-gamepad"></i>
+							{{end}}
+							{{with .windows}}
+								<i class="fa fa-windows"></i>
+							{{end}}
+							{{with .github}}
+								<i class="fa fa-github"></i>
+							{{end}}
+							{{with .youtube}}
+								<i class="fa fa-youtube-play"></i>
+							{{end}}
+						{{ end }}
+					</div>
+					{{ $thumb := .Fill "250x100" | resources.Fingerprint }}
+					<img src="{{$thumb.RelPermalink}}" caption="{{ $project.LinkTitle }}" alt="{{ $project.LinkTitle }}" />
+				</a>
+			</section>
+		{{ end }}
+	{{ end }}
+
+
+	{{ range .Pages.ByDate.Reverse }}
+		{{ $main_img := .Page.Resources.Get "main.png" }}
+		{{ with $main_img }}
+		{{ else }}
+			<section class="list">
+				{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+				{{ $dateHuman := .Date | time.Format "2006-01-02" }}
+				<time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+
+				<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+			</section>
+		{{ end }}
+	{{ end }}
+{{ end }}

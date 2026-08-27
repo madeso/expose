@@ -1,0 +1,18 @@
+<!-- make all markdown local images display correctly -->
+{{ $c := .Content}}
+
+<!-- adds a external link to all links -->
+{{ $c := $c | replaceRE "</a>" " <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>" }}
+
+<!-- adds lightbox to all images -->
+{{ $newImage2 := (print "<a href=\"$1\" data-lightbox=\"blog-" .Title "\"><img src=\"$1\" alt=$3 $4></a>") }}
+{{ $c := $c | replaceRE "<img src=\"([^\"]+)\" alt=(.*) (.*)>" $newImage2 }}
+
+
+<!-- change smileys? -->
+{{ $c := $c | replaceRE "[☺🙂]" "<i class=\"emoticon smiley\"></i>" }}
+{{ $c := $c | replaceRE "[😉]" "<i class=\"emoticon wink\"></i>" }}
+
+<div class="markdown">
+    {{ $c | safeHTML}}
+</div>
