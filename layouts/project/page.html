@@ -30,7 +30,19 @@
 
 	{{partial "project-links.html"}}
 
-	<p />
+	<p>
+		{{ with .NextInSection }}
+			<a href="{{ .RelPermalink }}" class="prev button enabled">&laquo; Previous</a>
+		{{ else }}
+			<a class="prev button disabled">&laquo; Previous</a>
+		{{ end }}
+
+		{{ with .PrevInSection }}
+			<a href="{{ .RelPermalink }}" class="next button enabled">Next &raquo;</a>
+		{{ else }}
+			<a class="next button disabled">Next &raquo;</a>
+		{{ end }}
+	</p>
 
 	{{ partial "terms.html" (dict "taxonomy" "categories" "page" .) }}
 {{ end }}

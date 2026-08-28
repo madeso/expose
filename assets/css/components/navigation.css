@@ -1,0 +1,33 @@
+.button {
+    padding: 10px;
+    margin: 10px;
+    position: relative;
+    top: -15px;
+    border-radius: 5px;
+}
+
+.button.enabled {
+    background-color: var(--background-hi);
+}
+
+.button.button.enabled:hover {
+    text-decoration: underline;
+}
+
+.button.disabled {
+    background-color: var(--background-hi);
+    color: var(--comment);
+    cursor: pointer;
+}
+
+.button.button.disabled:hover {
+    text-decoration: none;
+}
+
+.next {
+    float: right;
+}
+
+.prev {
+    float: left;
+}
