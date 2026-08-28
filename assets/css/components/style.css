@@ -24,6 +24,10 @@ a:link, a:visited
 
 a { text-decoration: none; }
 
+.projectlinks {
+    padding-bottom: 30px;
+}
+
 /* taxonomy on list */
 .taxonomy, .taxonomy ul, .taxonomy li {
     display: inline;
