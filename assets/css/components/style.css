@@ -28,6 +28,13 @@ a { text-decoration: none; }
     padding-bottom: 30px;
 }
 
+.devlog p {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 6px;
+}
+
 /* taxonomy on list */
 .taxonomy, .taxonomy ul, .taxonomy li {
     display: inline;

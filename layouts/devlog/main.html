@@ -1,0 +1,23 @@
+{{ define "main" }}
+	<h1>{{ .Title }}</h1>
+	{{partial "content.html" . }}
+
+	{{ $currentYear := now.Format "2006" }}
+	<h2>{{ $currentYear }}</h2>
+  	{{ range .RegularPagesRecursive.ByDate.Reverse }}
+		{{ $year := .Date.Format "2006"}}
+		{{ if eq $year $currentYear}}
+			<section>
+				<h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
+				{{partial "content.html" . }}
+			</section>
+		{{ end }}
+	{{ end }}
+
+	<h2>By year</h2>
+	{{ range .Sections.ByDate.Reverse }}
+		<section class="devlog">
+			<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{ .Summary }}
+		</section>
+	{{ end }}
+{{ end }}
