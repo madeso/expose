@@ -1,6 +1,7 @@
 {{ define "main" }}
-	<h1>{{ .Title }}</h1>
+	{{partial "title-with-rss.html" .}}
 	{{partial "content.html" . }}
+
 	{{ range .Pages.ByDate.Reverse.GroupByDate "2006" }}
 		<h2>{{ .Key }}</h2>
 		{{range .Pages }}

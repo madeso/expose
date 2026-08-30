@@ -1,0 +1,6 @@
+<h1>
+    {{ .Title }}
+    {{ range .AlternativeOutputFormats -}}
+        <a class="rss-link" href="{{.Permalink}}" type=".MediaType.Type"><i class="fa fa-rss"></i></a>
+    {{ end -}}
+</h1>
